@@ -1,4 +1,4 @@
-# CWN_CharSheet
+# Cities Without Number Character Sheet for Roll20
 
 How to add to Roll20:
 -Create a new game in Roll 20
