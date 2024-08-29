@@ -1,0 +1,411 @@
+/* General */
+    li {
+        list-style: none;
+    }
+    p {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    input {
+        border-style: ridges;
+        border-radius: 0px;
+        width: 100%;
+    }
+    .short_input {
+        width: 15%;
+    }
+    .medium_input {
+        width: 30%;
+    }
+    .large_input {
+        width: 75%
+    }
+    textarea {
+        resize: vertical;
+    }
+    .xsmallfont {
+        font-size:x-small;
+    }
+    .smallfont {
+        font-size: small;
+    }
+    .boldfont {
+        font-weight: bold;
+    }
+    .btn {
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .block {
+        border-style: ridge;
+        border-radius: 1px;
+        padding: 2px;
+    }
+
+/*Remove arrows from number inputs*/
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+/* Roll Buttons */
+    button[type=roll].roll-btn {
+        /* For use later */
+        background: transparent;
+        flood-color: transparent;
+        border: none;
+        box-shadow: none;
+        font-size: x-small;
+    }
+    .ui-dialog .charsheet button[type=roll].roll-btn::before {
+        content: "";
+    }
+    button[type=roll].roll-btn:hover {
+        background-color: transparent;
+        color: gray;
+        box-shadow: none;
+        
+    }
+    button[type=roll].roll-btn:active {
+        background: transparent;
+        border: none;
+        color: darkgray;
+        box-shadow: none;
+    }
+
+/* Character Page Layout*/
+    .sheet-character,
+    .sheet-inventory,
+    .sheet-hacking {
+        display: none;
+    }
+    .charsheet .sheet-tabstoggle[value="character"] ~ div.sheet-character{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .sheet-character h1 {
+        grid-column: span 3;
+    }
+    .character_block {
+        grid-column: span 3;
+    } 
+    .edges_block {
+        grid-column: span 3;
+    }
+    .combat_block,
+    .skills_block {
+        grid-row: span 2;
+    }
+/* Inventory Page Layout */
+    .charsheet .sheet-tabstoggle[value="inventory"] ~ div.sheet-inventory {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .sheet-inventory h1 {
+        grid-column: span 3;
+    }
+/* Hacking Page Layout */
+    .charsheet .sheet-tabstoggle[value="hacking"] ~ div.sheet-hacking {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .sheet-hacking h1 {
+        grid-column: span 4;
+    }
+    .basic_hacking_block,
+    .cyberdeck_block {
+        grid-column: span 2;
+    }
+    .verbs_block {
+        grid-column: span 3;
+    }
+    /* Inner Blocks */
+    .innerblock {
+        background-color:rgb(226, 226, 226);
+        border-radius: 3px;
+        margin: 2px;
+        padding: 1px;
+        border-style: groove;
+    }
+    .lightblock {
+        background-color:rgb(240, 240, 240);
+        border-radius: 3px;
+        margin: 2px;
+        padding: 1px;
+        border-style: groove;
+    }
+
+/* Character */
+    .character {
+        display: flex;
+        justify-content: space-between;
+    }
+    .character>div {
+        padding: 10px;
+    }
+    .character div {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+    .money {
+        width: 100px !important;
+    }
+
+/* Edges */
+    .edge textarea{
+        height: 60px;
+        width: 98%;
+        border-style: groove;
+        border-radius: 0px;
+    }
+
+/* Weapons */
+    .weapon select {
+        width: 70px;
+    }
+    .weapon p {
+        font-weight: bold;
+    }
+    .weapon {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #weaponname {
+        grid-column: span 2;
+    }
+    #shockbox {
+        width: 55%;
+    }
+
+/* Skills */
+    .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: right;
+    }
+    .skills .column {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 5px;
+    }
+    .skills input[type="number"] {
+        width: 20px !important;
+    }
+    .skills input[type="text"] {
+        width: 60%;
+    }
+    .otherskill {
+        text-align: right;
+    }
+
+/* Foci */
+    .foci {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+    }
+    .foci p {
+        align-self: center;
+    }
+    .foci input[type="text"] {
+        width: 75%;
+    }
+    .foci textarea {
+        grid-column: span 2;
+        height: 40px;
+        width: 90%;
+        border-style: groove;
+        border-radius: 0px;
+    }
+    .foci button {
+        grid-column: span 2;
+        justify-self: end;
+    }
+
+/* Readied Items and Armor*/
+    .readied_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+    }
+    .armor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        text-align: center;
+    }
+    #armorname {
+        grid-column: span 2;
+        width: 80%;
+        justify-self: center;
+    }
+    #traumatarget {
+        grid-column: span 2;
+    }
+
+/* Combat Info  */
+    .health {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 2px;
+        align-items: center;
+        justify-items: center;
+    }
+    .health h3 {
+        grid-column: span 6;
+    }
+    .health h4 {
+        grid-column: span 2;
+    }
+    #injuries {
+        justify-self: left;
+    }
+    .health input {
+        grid-column: span 2;
+    }
+    .health textarea {
+        grid-column: span 6;
+        height: 40px;
+        width: 95%;
+        border-style: groove;
+        border-radius: 0px;
+    }
+    .health p {
+        grid-column: span 3;
+        text-align: center;
+    }
+    .systemstrain {
+        margin-top: 10px;
+        display: grid;
+        column-gap: 2px;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+    .systemstrain h3 {
+        grid-column: span 3;
+        text-align: center;
+    }
+    .systemstrain p {
+        grid-column: span 3;
+        text-align: center;
+    }
+    .saves {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-content: space-evenly;
+        justify-items: center;
+        column-gap: 5px;
+        padding-bottom: 5px;
+    }
+    .saves h3 {
+        grid-column: span 4;
+    }
+    .saves p {
+        text-align: center;
+    }
+
+/* Attributes */
+    .attributes_block>p {
+        text-align: center;
+    }
+    .attribute_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .attribute {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+    .attribute p {
+        font-weight: bold;
+    }
+    .attribute h3 {
+        grid-column: span 2;
+    }
+
+/* Cyber */
+    .cyber {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cybername {
+        grid-column: span 2;
+    }
+    .cyber div {
+        grid-column: span 2;
+    }
+    .cyber textarea {
+        height: 40px;
+        width: 90%;
+        border-style: groove;
+        border-radius: 0px;
+    }
+    .cyber p {
+        font-weight: bold;
+    }
+    
+/* Stowed Inventory */
+    .stowed {
+        display: grid;
+        grid-template-columns: 9fr 1fr;
+    }
+
+    .vehicle_drone_block textarea, 
+    .notes_block textarea,
+    .goals_block textarea,
+    .friends_block textarea {
+        width: 95%;
+    }
+
+/* Programs */
+    .verb {
+        display: grid;
+        grid-template-columns: 1fr 4fr 4fr 2fr 2fr 2fr 12fr 1fr;
+        justify-items: center;
+    }
+    .verb p {
+        align-self: self-end;
+        text-align: center;
+    }
+    .verb input[type="number"]{
+        width: 100% !important;
+    }
+    .verbs_block textarea{
+        width: 98%;
+        height: 60px;
+    }
+    .subject {
+        display: grid;
+        grid-template-columns: 1fr 3fr 3fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+/* Cyberdeck */
+    .cyberdeck {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        column-gap: 20px;
+        font-weight: bold;
+    }
+
+/* Basic Hacking */
+    .basic_hacking {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+        justify-content: center;
+        text-align: center;
+        font-weight: bold;
+    }

@@ -1,0 +1,376 @@
+<input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab" value="character">
+<div>
+    <button type="action" name="act_character">Character</button> 
+    <button type="action" name="act_inventory">Inventory & Notes</button> 
+    <button type="action" name="act_hacking">Hacking</button>
+</div>
+
+<div class="sheet-character">
+    <h1>Character</h1>
+    <div class="character_block block">
+        <h2>Character Info</h2>
+        <div class="character innerblock boldfont">
+            <p>Name: <br> <input type="text" name="attr_character_name"></p>
+            <p>Background: <br> <input type="text" name="attr_background"></p>
+            <p>Money: <br> <input type="number" name="attr_money" class="money" value="0"></p>
+            <p>Level: <br> <input type="number" name="attr_level" min="0" max="10" value="1"></p>
+            <p>XP: <br> <input type="number" name="attr_xp" value="0"></p>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="edges_block block">
+        <h2>Edges</h2> <p class="xsmallfont">(New unlock at level 5)</p>
+        <fieldset class="repeating_edges">
+            <div class="lightblock edge">
+                <p>Name: <input type="text" class="medium_input" name="attr_edgename"> <button class="roll-btn" type="roll" value="&{template:default} {{name=@{edgename}}} {{Description=@{edgedesc}}}" name="roll_edge">Send to Chat</button></p>
+                <p>Descritpion:</p> <textarea name="attr_edgedesc"></textarea>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="combat_block block">
+        <h2>Combat Info</h2>
+        <div class="health innerblock">
+            <h3>Hit Points</h3>
+            <h4>HP:</h4> <h4>HP Max:</h4> <h4>Trauma<br>Target:</h4>
+            <input type="number" name="attr_hp"> <input type="number" name="attr_hp_max"> <input type="number" disabled name="attr_traumatarget" value="(6+@{TT_mod})">
+            <h4 id="injuries">Injuries:</h4>
+            <textarea name="attr_injuries"></textarea>
+            <p class="xsmallfont">Max =<br>(1d6+Con) x lvl</p> <p class="xsmallfont">Hard to Kill:<br>Gain +2hp per level</p>
+        </div>
+        <div class="systemstrain innerblock">
+            <h3>System Strain</h3>
+            <h4>Current:</h4> <h4>Permanent:</h4> <h4>Max:</h4>
+            <input type="number" name="attr_systemstrain"> 
+            <input type="number" name="attr_systemstrain_perm"> 
+            <input type="number" id="systemstrainmax" name="attr_systemstrain_max">
+            <p class="xsmallfont">Max =<br>Constitution Score + Lifestyle Mod</p>
+        </div>
+        <div class="saves innerblock">
+            <h3>Saving Throws</h3>
+            <p class="xsmallfont"><button class="roll-btn boldfont" type="roll" name="roll_physave" value="/roll 1d20>@{physave}">Physical:</button></p> 
+            <p class="xsmallfont"><button class="roll-btn boldfont" type="roll" name="roll_evasave" value="/roll 1d20>@{evasave}">Evasion:</button></p> 
+            <p class="xsmallfont"><button class="roll-btn boldfont" type="roll" name="roll_mensave" value="/roll 1d20>@{mensave}">Mental:</button></p> 
+            <p class="xsmallfont"><button class="roll-btn boldfont" type="roll" name="roll_lucksave" value="/roll 1d20>@{lucksave}">Luck:</button></p>
+            <input type="number" name="attr_physave">
+            <input type="number" name="attr_evasave">
+            <input type="number" name="attr_mensave">
+            <input type="number" name="attr_lucksave">
+            <p class="xsmallfont">16-lvl<br>-[Str|Con]</p>
+            <p class="xsmallfont">16-lvl<br>-[Dex|Int]</p>
+            <p class="xsmallfont">16-lvl<br>-[Wis|Cha]</p>
+            <p class="xsmallfont">16-lvl</p>
+        </div>
+    </div>
+
+    <div class="attributes_block block">
+        <h2>Attributes</h2>
+        <div class="attribute">
+            <div class="attribute innerblock">
+                <h3>Strength:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_str_score" value="10"> <input type="number" name="attr_str_mod" value="0">
+            </div>
+            <div class="attribute innerblock">
+                <h3>Dexterity:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_dex_score" value="10"> <input type="number" name="attr_dex_mod" value="0">
+            </div>
+            <div class="attribute innerblock">
+                <h3>Constitution:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_con_score" value="10"> <input type="number" name="attr_con_mod" value="0">
+            </div>
+            <div class="attribute innerblock">
+                <h3>Intelligence:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_int_score" value="10"> <input type="number" name="attr_int_mod" value="0">
+            </div>
+            <div class="attribute innerblock">
+                <h3>Wisdom:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_wis_score" value="10"> <input type="number" name="attr_wis_mod" value="0">
+            </div>
+            <div class="attribute innerblock">
+                <h3>Charisma:</h3> 
+                <p>Score:</p> <p>Modifier:</p>
+                <input type="number" name="attr_cha_score" value="10"> <input type="number" name="attr_cha_mod" value="0">
+            </div>
+        </div>
+        <p class="xsmallfont">3 (-2) <span class="smallfont boldfont">|</span> 4-7 (-1) <span class="smallfont boldfont">|</span> 8-13 (+0) <span class="smallfont boldfont">|</span> 14-17 (+1) <span class="smallfont boldfont">|</span> 18 (+2)</p>
+    </div>
+
+    <div class="skills_block block">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="column">
+                <button type="roll" value="&{template:default} {{name=Administer check}} {{result=[[2d6+@{administer} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}}]]]]}}" name="roll_administer" class="roll-btn"><p>Administer:</p> </button><input type="number" name="attr_administer" value="-1">
+                <button type="roll" value="&{template:default} {{name=Connect check}} {{result=[[2d6+@{connect} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}}]]]]}}" name="roll_connect" class="roll-btn"><p>Connect:</p> </button><input type="number" name="attr_connect" value="-1">
+                <button type="roll" value="&{template:default} {{name=Drive check}} {{result=[[2d6+@{drive} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_drive" class="roll-btn"><p>Drive:</p> </button><input type="number" name="attr_drive" value="-1">
+                <button type="roll" value="&{template:default} {{name=Exert check}} {{result=[[2d6+@{exert} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] +@{heavyarmor} ]] }}" name="roll_exert" class="roll-btn"><p>Exert:</p> </button><input type="number" name="attr_exert" value="-1">
+                <button type="roll" value="&{template:default} {{name=Fix check}} {{result=[[2d6+@{fix} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_fix" class="roll-btn"><p>Fix:</p> </button><input type="number" name="attr_fix" value="-1">
+                <button type="roll" value="&{template:default} {{name=Heal check}} {{result=[[2d6+@{heal} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_heal" class="roll-btn"><p>Heal:</p> </button><input type="number" name="attr_heal" value="-1">
+                <button type="roll" value="&{template:default} {{name=Know check}} {{result=[[2d6+@{know} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_know" class="roll-btn"><p>Know:</p> </button><input type="number" name="attr_know" value="-1">
+                <button type="roll" value="&{template:default} {{name=Lead check}} {{result=[[2d6+@{lead} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_lead" class="roll-btn"><p>Lead:</p> </button><input type="number" name="attr_lead" value="-1">
+                <button type="roll" value="&{template:default} {{name=Notice check}} {{result=[[2d6+@{notice} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_notice" class="roll-btn"><p>Notice:</p> </button><input type="number" name="attr_notice" value="-1">
+                <button type="roll" value="&{template:default} {{name=Perform check}} {{result=[[2d6+@{perform} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_perform" class="roll-btn"><p>Perform:</p> </button><input type="number" name="attr_perform" value="-1">
+                <button type="roll" value="&{template:default} {{name=Program check}} {{result=[[2d6+@{program} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_program" class="roll-btn"><p>Program:</p> </button><input type="number" name="attr_program" value="-1">
+            </div>
+            <div class="column">
+                <button type="roll" value="&{template:default} {{name=Punch check}} {{result=[[2d6+@{punch} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_punch" class="roll-btn"><p>Punch:</p> </button><input type="number" name="attr_punch" value="-1">
+                <button type="roll" value="&{template:default} {{name=Shoot check}} {{result=[[2d6+@{shoot} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_shoot" class="roll-btn"><p>Shoot:</p> </button><input type="number" name="attr_shoot" value="-1">
+                <button type="roll" value="&{template:default} {{name=Sneak check}} {{result=[[2d6+@{sneak} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] +@{heavyarmor} ]] }}" name="roll_sneak" class="roll-btn"><p>Sneak:</p> </button><input type="number" name="attr_sneak" value="-1">
+                <button type="roll" value="&{template:default} {{name=Stab check}} {{result=[[2d6+@{stab} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_stab" class="roll-btn"><p>Stab:</p> </button><input type="number" name="attr_stab" value="-1">
+                <button type="roll" value="&{template:default} {{name=Survive check}} {{result=[[2d6+@{survive} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_survive" class="roll-btn"><p>Survive:</p> </button><input type="number" name="attr_survive" value="-1">
+                <button type="roll" value="&{template:default} {{name=Talk check}} {{result=[[2d6+@{talk} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_talk" class="roll-btn"><p>Talk:</p> </button><input type="number" name="attr_talk" value="-1">
+                <button type="roll" value="&{template:default} {{name=Trade check}} {{result=[[2d6+@{trade} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_trade" class="roll-btn"><p>Trade:</p> </button><input type="number" name="attr_trade" value="-1">
+                <button type="roll" value="&{template:default} {{name=Work check}} {{result=[[2d6+@{work} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_work" class="roll-btn"><p>Work:</p> </button><input type="number" name="attr_work" value="-1">
+                <div><button type="roll" value="&{template:default} {{name=@{other1_name} check}} {{result=[[2d6+@{other1} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_other1"></button><input type="text" class="otherskill" placeholder="Other" name="attr_other1_name"></div> <input type="number" name="attr_other1" value="-1">
+                <div><button type="roll" value="&{template:default} {{name=@{other2_name} check}} {{result=[[2d6+@{other2} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_other2"></button><input type="text" class="otherskill" placeholder="Other" name="attr_other2_name"></div> <input type="number" name="attr_other2" value="-1">
+                <div><button type="roll" value="&{template:default} {{name=@{other3_name} check}} {{result=[[2d6+@{other3} + [[?{Using Which Ability|Strength, @{str_mod}|Dexterity, @{dex_mod}|Constitution, @{con_mod}|Intelligence, @{int_mod}|Wisdom, @{wis_mod}|Charisma, @{cha_mod}   }]] ]] }}" name="roll_other3"></button><input type="text" class="otherskill" placeholder="Other" name="attr_other3_name"></div> <input type="number" name="attr_other3" value="-1">
+            </div>
+        </div>
+    </div>
+
+    <div class="foci_block block">
+        <h2>Foci</h2>
+        <fieldset class="repeating_foci">
+            <div class="foci innerblock">
+                <p>Name: <input type="text" name="attr_fociname"></p>
+                <p>LVL:<input type="number" name="attr_foci_lvl" value="1"></p>
+                <textarea name="attr_focidesc"></textarea>
+                <button class="roll-btn" type="roll" value="&{template:default} {{name=@{fociname} @{foci_lvl}}} {{Description=@{focidesc}}}" name="roll_foci">Send to Chat</button>
+            </div>
+        </fieldset> 
+    </div>
+
+    <div class="readied_block block">
+        <h2>Armor</h2>
+        <div class="armor innerblock">
+            <div id="armorname"><h4>Name:</h4> <input type="text" name="attr_armor_name"></div>
+            <div><h4>Ranged AC:</h4> <input type="number" name="attr_rangedAC"></div>
+            <div><h4>Melee AC:</h4> <input type="number" name="attr_meleeAC"></div>
+            <div><h4>Damage Soak:</h4> <input type="number" name="attr_soak"></div>
+            <div><h4>Encumberance:</h4> <input type="number" name="attr_armor_encum"></div>
+            <div id="traumatarget"><h4>Trauma Target Mod:</h4> <input type="number" name="attr_TT_mod" value="0"></div>
+            <div><h4>Subtle?</h4> <input type="checkbox" name="attr_subtle"></div>
+            <div><h4>Heavy?</h4> <input type="checkbox" name="attr_heavyarmor" value="-1"></div>
+        </div>
+        <h2>Readied Items</h2>
+        <div class="readied innerblock">
+            <fieldset class="repeating_readied">
+                <input type="text" name="attr_readied">
+            </fieldset>
+        </div>
+        <p class="xsmallfont">Max Items = Strength Score/2</p>
+    </div>
+
+    <div class="weapons_block block">
+        <h2>Weapons</h2>
+        <p><span class="boldfont">Attack Bonus:</span> <input type="number" value="floor((@{level}/(2-@{edgemod})))" name="attr_atkbonus" disabled> On Target? <input type="checkbox" value="1" name="attr_edgemod"></p>
+        <fieldset class="repeating_weapons">
+            <div class="weapon innerblock">
+                <p id="weaponname">Name: <input type="text" name="attr_weapon" value="weapon"></p>
+                <p>Trauma Die: <input type="text" name="attr_TRdie" class="medium_input" value="1d6"></p> 
+                <p>Trauma Mult: <input type="text" name="attr_TRmult" class="medium_input" value="x2"></p>
+                <p>Range (ft): <br><input type="number" name="attr_shortrange" value="0">/<input type="number" name="attr_longrange" value="0"></p> 
+                <p>Mag / Max: <br><input type="number" name="attr_mag_remain">/<input type="number" name="attr_mag"></p>
+                <p>Damage: <input type="text" name="attr_dmg" class="medium_input" value="1d2"> </p>
+                    
+                <p>Attr.: 
+                <select name="attr_weapon_attribute">
+                    <option value="@{str_mod}">Str</option>
+                    <option value="@{dex_mod}">Dex</option>
+                </select></p>
+                <p>Skill: <select name="attr_weapon_skill">
+                        <option value="@{shoot}">Shoot</option>
+                        <option value="@{stab}">Stab</option>
+                        <option value="@{punch}">Punch</option>
+                    </select></p>
+                <p>Shock: <input type="text" name="attr_shock" id="shockbox"></p>
+                <button type="roll" value="&{template:default} {{name=@{weapon}}} {{Attack=[[1d20+@{atkbonus}+@{weapon_attribute}+@{weapon_skill}]]}} {{Trauma Die=[[@{TRdie}]]}} {{Trauma Multiplier=@{TRmult}}} {{Damage=[[@{dmg}+@{weapon_attribute}+@{weapon_skill}]]}} {{Shock=@{shock}}} {{Range=[[@{shortrange}]]/[[@{longrange}]]}}" name="roll_attack">Attack</button>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="cyberware_block block">
+        <h2>Cyberware</h2>
+        <fieldset class="repeating_cyberware">
+            <div class="cyber innerblock">
+                <p class="cybername">Cyber: <input type="text" name="attr_cybername"></p>
+                <p>Cost: <input type="number" name="attr_cybercost"></p>
+                <p>Sys Strain: <input type="number" name="attr_cyberstrain"></p>
+                <p>Conceal: <input type="text" class="large_input" name="attr_cyberconceal"></p>
+                <p>Type: <input type="text" class="large_input" name="attr_cybertype"></p>
+                <div>
+                    <p>Effect:</p>
+                    <textarea name="attr_cybereffect"></textarea>
+                </div>
+                <button class="roll-btn" type="roll" value="&{template:default} {{name=@{cybername}}} {{Effect=@{cybereffect}}}" name="roll_cyber">Send to Chat</button>
+            </div>
+        </fieldset>
+    </div>
+
+</div>
+
+
+<div class="sheet-inventory">
+    <h1>Inventory and Notes</h1>
+    <div class="stowed_inv_block block">
+        <h2>Inventory</h2> <p class="xsmallfont">(Max Enc = Strength Score)</p>
+        <div class="stowed"><p>Item</p><p>Enc.</p></div>
+        <div>
+            <fieldset class="repeating_stowed">
+                <div class="stowed"><input type="text" name="attr_item"><input type="number" name="attr_item_encum"></div>
+            </fieldset>
+        </div>
+        <p style="text-align: end;">Total Encumberance: <input type="number" name="attr_encum" readonly></p> 
+        <p style="text-align: end;">Max Encumberance: <input type="number" name="attr_maxencum" disabled value="@{str_score}"></p>
+    </div>
+
+    <div class="storage_block block">
+        <h2>Equipment in Storage</h2>
+        <fieldset class="repeating_storage">
+            <input type="text" name="attr_storage">
+        </fieldset>
+    </div>
+
+    <div class="assets_block block">
+        <h2>Assets/Owned Property</h2>
+        <fieldset class="repeating_assets">
+            <input type="text" name="attr_assets">
+        </fieldset>
+    </div>
+
+    <div class="vehicle_drone_block block">
+        <h2>Vehicles & Drones</h2>
+        <textarea name="attr_vehicles"></textarea>
+    </div>
+
+    <div class="notes_block block">
+        <h2>Notes</h2>
+        <textarea name="attr_notes"></textarea>
+    </div>
+
+    <div class="aliases_block block">
+        <h2>Aliases & IDs</h2>
+        <fieldset class="repeating_aliases">
+            <input type="text" name="attr_aliases">
+        </fieldset>
+    </div>
+
+    <div class="languages_block block">
+        <h2>Known Languages</h2>
+        <fieldset class="repeating_languages">
+            <input type="text" name="attr_languages">
+        </fieldset>
+    </div>
+
+    <div class="goals_block block">
+        <h2>Current Goals</h2>
+        <textarea name="attr_goals"></textarea>
+    </div>
+
+    <div class="friends_block block">
+        <h2>Friends and Acquaintences</h2>
+        <fieldset class="repeating_friends">
+            <div class="lightblock">
+                <p>Name: <input type="text" name="attr_friend" class="large_input"></p>
+                <p>Relation: <textarea name="attr_relation"></textarea></p>
+                </div>
+        </div>
+</div>
+
+
+<div class="sheet-hacking">
+    <h1>Hacking</h1>
+    <div class="basic_hacking_block block">
+        <h2>Hacking Info</h2>
+        <div class="basic_hacking innerblock">
+            <p>Base Access:<br> <input type="number" disabled value="(floor(@{int_mod}/2))+@{program}+@{cyberdeck_mod}" name="attr_baseaccess"></p>
+            <p>CPU Available:<br> <input type="number" name="attr_cpu">/ <input type="number" disabled value="@{cyberdeck_cpu}" name="attr_cpu_max"></p>
+            <p>Shielding Available:<br> <input type="number" name="attr_shield">/ <input type="number" disabled value="@{cyberdeck_shield}" name="attr_shield_max"></p>
+        </div>
+    </div>
+
+    <div class="cyberdeck_block block">
+        <h2>Cyberdeck</h2>
+        <div class="cyberdeck innerblock">
+            <p>Name:<br> <input type="text" name="attr_cyberdeck_name"></p>
+            <p>Cost:<br> <input type="number" name="attr_cyberdeck_cost"></p>
+            <p>Bonus Access:<br> <input type="number" name="attr_cyberdeck_mod"></p>
+            <p>Memory:<br> <input type="number" name="attr_cyberdeck_memory"></p>
+            <p>Shielding:<br> <input type="number" name="attr_cyberdeck_shield"></p>
+            <p>CPU:<br> <input type="number" name="attr_cyberdeck_cpu"></p>
+        </div>
+    </div>
+
+    <div class="verbs_block block">
+        <h2>Verbs</h2>
+        <div class="verb boldfont"><p></p><p>Name</p><p>Targets/<br>Types</p><p>Access Cost</p><p>Check Mod.</p><p>Instant?</p><p>Use/Effect</p><p></p></div>
+        <div class="innerblock">
+            <fieldset class="repeating_verbs innerblock">
+                <div class="verb">
+                    <input type="checkbox" name="attr_verb_check">
+                    <input type="text" name="attr_verb_name">
+                    <input type="text" name="attr_verb_target">
+                    <input type="number" name="attr_verb_access">
+                    <input type="number" name="attr_verb_mod">
+                    <input type="checkbox" name="attr_verb_instant">
+                    <input type="text" name="attr_verb_effect">
+                    <button type="roll" name="roll_verb" value="&{template:default} {{name=@{verb_name} Verb}} {{Description=@{verb_desc}}}"></button>
+                </div>
+                <textarea name="attr_verb_desc" value="description here"></textarea>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="subjects_block block">
+        <h2>Subjects</h2>
+        <div class="subject boldfont"><p></p><p>Name</p><p>Type</p></div>
+        <div class="innerblock">
+            <fieldset class="repeating_subjects innerblock">
+                <div class="subject">
+                    <input type="checkbox" name="attr_subjectcheck">
+                    <input type="text" name="attr_subject_name">
+                    <input type="text" name="attr_subject_type">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    
+</div>
+
+<script type="text/worker">
+    const buttonlist = ["character","inventory","hacking"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+
+    const repeatingSum = (destinations, section, fields) => {
+        if (!Array.isArray(destinations)) destinations = [destinations.replace(/\s/g, '').split(',')];
+        if (!Array.isArray(fields)) fields = [fields.replace(/\s/g, '').split(',')];
+        getSectionIDs(`repeating_${section}`, idArray => {
+            const attrArray = idArray.reduce((m, id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))], []);
+            getAttrs([...attrArray], v => {
+                const getValue = (section, id, field) => v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : parseFloat(v[`repeating_${section}_${id}_${field}`]) || 0;
+                const commonMultipliers = (fields.length <= destinations.length) ? [] : fields.splice(destinations.length, fields.length - destinations.length);
+                const output = {};
+                destinations.forEach((destination, index) => {
+                    output[destination] = idArray.reduce((total, id) => total + getValue(section, id, fields[index]) * commonMultipliers.reduce((subtotal, mult) => subtotal * getValue(section, id, mult), 1), 0);
+                });
+                setAttrs(output);
+            }); 
+        }); 
+    };
+
+    on('change:repeating_stowed:item_encum remove:repeating_stowed', function() {
+        repeatingSum("encum","stowed","item_encum");
+    });
+</script>
