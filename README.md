@@ -1,7 +1,7 @@
 # Cities Without Number Character Sheet for Roll20
 
 How to add to Roll20:\
-*Note: using this sheet requires a Roll20 Pro subscription*\
+*Note: using this sheet requires a Roll20 Pro subscription, however, if you have a Pro subscription, you make the game using the custom sheet, and then cancel the Pro subscription, then the game remains completely playable. I don't know if this will change in the future, but it could be a way to use the sheet without paying a subscription.*\
 -Create a new game in Roll 20\
 -Under "Select a Character Sheet," choose "Custom" from the drop down box.\
 -Create Game\
